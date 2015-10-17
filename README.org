@@ -1,0 +1,11 @@
+#+TITLE: Accessing a DB though an EJB layer
+#+AUTHOR: Daniele Santoro
+#+DATE: 18/10/2015
+
+* Introduction
+
+* Implementation
+
+* Deployment
+
+* Comments and notes
