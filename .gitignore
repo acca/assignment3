@@ -1,0 +1,18 @@
+/a3Client/nbproject/private/# Ignore temporary files
+*~
+._*
+*.DS_Store
+
+# Ignore binary files
+*.class
+
+# Eclipse --> Exclude only if maven is used
+#.classpath
+#.project
+#.settings/
+
+# Maven
+#log/
+#target/
+/a3Server/nbproject/private/
+/a3Server/a3Server-ejb/nbproject/private/
