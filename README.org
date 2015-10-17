@@ -9,3 +9,9 @@
 * Deployment
 
 * Comments and notes
+* Issues
+  1) PROVIDER_URL, "http-remoting://127.0.0.1:8080/ not jndiProps.put(Context.PROVIDER_URL, "remote://127.0.0.1:4447"); for WildFly --> http://stackoverflow.com/questions/24452075/wildfly-remote-ejb-invocation and https://docs.jboss.org/author/display/AS72/EJB+invocations+from+a+remote+server+instance 
+  2) WildFly Application Server - plugin does not stop the JBoss server
+  3) javaee-api for NetBeans not working: http://stackoverflow.com/questions/15386950/classformaterror-absent-code-attribute-in-method-that-is-not-native-or-abstract
+  4) Exception in thread "main" java.lang.IllegalStateException: EJBCLIENT000025: No EJB receiver available for handling [appName:a3Server, moduleName:a3Server-ejb, distinctName:] combination for invocation context org.jboss.ejb.client.EJBClientInvocationContext@527740a2
+     --> https://developer.jboss.org/thread/199457 and same link in 1)

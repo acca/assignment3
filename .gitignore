@@ -16,3 +16,9 @@
 #target/
 /a3Server/nbproject/private/
 /a3Server/a3Server-ejb/nbproject/private/
+/a3Client/build/
+/a3Client/dist/
+/a3Server/a3Server-ejb/build/
+/a3Server/build/
+/a3Server/a3Server-ejb/dist/
+/a3Server/dist/
