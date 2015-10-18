@@ -22,3 +22,10 @@
 /a3Server/build/
 /a3Server/a3Server-ejb/dist/
 /a3Server/dist/
+/a3Client/target/
+/a3Server/a3Server-ejb/target/
+/a3Server/a3Server-ear/target/
+/JavaApplication6/nbproject/private/
+/JavaApplication6/build/
+/JavaApplication6/dist/
+/mavenproject1/target/

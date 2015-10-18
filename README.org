@@ -15,3 +15,14 @@
   3) javaee-api for NetBeans not working: http://stackoverflow.com/questions/15386950/classformaterror-absent-code-attribute-in-method-that-is-not-native-or-abstract
   4) Exception in thread "main" java.lang.IllegalStateException: EJBCLIENT000025: No EJB receiver available for handling [appName:a3Server, moduleName:a3Server-ejb, distinctName:] combination for invocation context org.jboss.ejb.client.EJBClientInvocationContext@527740a2
      --> https://developer.jboss.org/thread/199457 and same link in 1)
+  5) =Exception in thread "main" javax.naming.NoInitialContextException: Cannot instantiate class: org.jboss.naming.remote.client.InitialContextFactory [Root exception is java.lang.ClassNotFoundException: org.jboss.naming.remote.client.InitialContextFactory]=
+     --> Solved using 
+     #+BEGIN_EXAMPLE
+     <dependency>
+  <groupId>org.wildfly</groupId>
+  <artifactId>wildfly-ejb-client-bom</artifactId>
+  <version>8.0.0.Final</version>
+  <type>pom</type>
+</dependency>
+     #+END_EXAMPLE
+     From: https://docs.jboss.org/author/display/WFLY8/Remote+JNDI+Reference+Update+Draft
