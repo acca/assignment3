@@ -55,8 +55,7 @@ public class Client {
 
         try {
             while ( ((ch = System.in.read()) != -1) && (quit == false) ) {                
-                if (ch != '\n' && ch != '\r') {
-                    System.out.println(USER_MSG);
+                if (ch != '\n' && ch != '\r') {                    
                     switch((char)ch){
                         case 's':
                         case 'S':
@@ -75,8 +74,9 @@ public class Client {
                             System.out.println("Quitting. Hope you had good business !!!");
                             //client.releaseRemoteTrade();
                             quit = true;
-                            break;                        
+                            break;                    
                     }
+                    System.out.println(USER_MSG);
                 }
             
             }

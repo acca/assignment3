@@ -7,7 +7,11 @@
 * Implementation
 
 * Deployment
+  
 
+
+
+  mvn install
 * Comments and notes
 * Issues
   1) PROVIDER_URL, "http-remoting://127.0.0.1:8080/ not jndiProps.put(Context.PROVIDER_URL, "remote://127.0.0.1:4447"); for WildFly --> http://stackoverflow.com/questions/24452075/wildfly-remote-ejb-invocation and https://docs.jboss.org/author/display/AS72/EJB+invocations+from+a+remote+server+instance 
