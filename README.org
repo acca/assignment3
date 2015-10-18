@@ -47,7 +47,6 @@
       tail -f server.log
       #+END_EXAMPLE
 ** Deploy & Run
-   All builds already compiled and packaged are not available in the repository but hey are under the respectively =target= folders inside the zip file sent via email.
    It is possible to run the application from inside Netbeans but the Maven plugin must be installed, otherwise follow these steps:
    1) Download the repository using git:
       #+BEGIN_EXAMPLE
