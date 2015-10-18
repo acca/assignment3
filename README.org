@@ -3,31 +3,137 @@
 #+DATE: 18/10/2015
 
 * Introduction
+  Code and documentation are present at this link: https://github.com/acca/assignment3. 
+
+  This application is in the domain of the web application that needs to retrieve features or functionality from a remote service. Indeed the application is composed by both *client* and *server* tiers.
+  
+  A simplified mapping into the real world of this application can be the follow:
+
+  /A user sell or buy stocks to/from an online market (it could be the stock market). While the user performs operations the prices of the goods changes in time because of other users interaction with the market. The prices of the stocks are then computed by a centralized server where all the suers perform business operations./
+
+  Following the above abstraction I've deployed:
+  - *The client side*: A Standard Java application (SE) which manages the interaction with the user, while at the same time make use of services offered by the server tier to perform particular computations on the data passed to it.
+  - *The server side*: An Enterprise Java application (EE) which return to the user the current price of a stock given the nominal price.
 
 * Implementation
+  The following components are the most important:
+
+  - *TradeRemote.java*: This interface describes the behavior of the Trade.java EJB. This is important both in the client and in the server to let the framework generate automatically all the relevant classes responsible for the communication.
+  - *Trade.java*: This class implements the above remote interface. This is a basically a stateless Java Bean which returns the current vaulue of a stock. It is called each time the current price for a stock is needed. It is present on the server, in particular deployed on a JBoss server instance on my computer.
+  - *Derby DB*: An instance of Derby DB has been configured and installed in my computer in order to store persistent data.
+  - *JBoss*: An instance of JBoss (WildFly) including not only the EE framework used by the server to expose the EJB but also a JNDI layer to let the client browse and find the relative service offered by the EJB.
+  - *User.java*: Is the entity class which let me store data on the database automatically through Hibernate tool, using O.R.M. technology.
+  - *Client.java*: Is the main class
+
+  The following features are the most important:
+
+  - *Sell/Buy*: As requested the user can buy or sell stocks from the client application. The client ask for the price of each stock to the server (10 independent requests) to get the current price and calculate the total price for the business operation.
+  - *List all transactions*: This is an *additional feature* which prints all the business transactions a used has performed on the market. This information is stored on the DB persistent layer.
+  - *Maven build support*: I've first started developing without an automation tool and therefore including all the library by hand. The work started to be very complex in particular on the right choice of all the libraries needed. For these reason and also to allow a user to test quickly the application I've decided to deploy a Maven based project.
 
 * Deployment
-  
+  In the assignment are present two Netbeans project: /a3Client/ and /a3Server/.
+** Requirements
+   1) A JBoss AS must run and accept JNDI (http-remoting) connections on =127.0.0.1:8080=
+   2) A JBoss username (in the ApplicationRealm) with following credentials must be setup:
+      #+BEGIN_EXAMPLE
+      Username: user
+      Password: pw
+      #+END_EXAMPLE
+   3) A Derby DB must run and accept connection on =localhost:1527=
+   4) This is not required but having the JBoss log open on another shell can be useful:
+      #+BEGIN_EXAMPLE
+      cd $JBOSS_HOME/standalone/log
+      tail -f server.log
+      #+END_EXAMPLE
+** Deploy & Run
+   All builds already compiled and packaged are not available in the repository but hey are under the respectively =target= folders inside the zip file sent via email.
+   It is possible to run the application from inside Netbeans but the Maven plugin must be installed, otherwise follow these steps:
+   1) Download the repository using git:
+      #+BEGIN_EXAMPLE
+      git clone https://github.com/acca/assignment3.git
+      #+END_EXAMPLE
+   2) Move into the project main folder
+      #+BEGIN_EXAMPLE
+      cd assignment3
+      #+END_EXAMPLE
+   3) Build the EE application
+      #+BEGIN_EXAMPLE
+      mvn install -f a3Server/
+      #+END_EXAMPLE
+      Both a3Server-ejb and a3Server-ear should be deployed. If not run the command for each one:
+      #+BEGIN_EXAMPLE
+      mvn install -f a3Server/a3Server-ejb
+      mvn install -f a3Server/a3Server-ear
+      #+END_EXAMPLE
+   4) Move the generated =a3Server-ear-1.0-SNAPSHOT.ear.= file into the JBoss deployment folder
+      #+BEGIN_EXAMPLE
+      cp a3Server/a3Server-ear/target/a3Server-ear-1.0-SNAPSHOT.ear $JBOSS_HOME/standalone/deployments/
+      #+END_EXAMPLE
+      In the JBoss log you should see messages saying the application has been successfully deployed.
+   5) Build and run the SE application
+      #+BEGIN_EXAMPLE
+      mvn exec:java -f a3Client/
+      #+END_EXAMPLE
+   6) Follow on-screen instructions and see the JBoss log
 
-
-mvn exec:java -f a3Client/
-  mvn install -f a3Server/
+** Screen-shots
+   1) Application output
+   2) Application output showing DB queries
+   3) JBoss AS log file
 * Comments and notes
-* Issues
-  1) PROVIDER_URL, "http-remoting://127.0.0.1:8080/ not jndiProps.put(Context.PROVIDER_URL, "remote://127.0.0.1:4447"); for WildFly --> http://stackoverflow.com/questions/24452075/wildfly-remote-ejb-invocation and https://docs.jboss.org/author/display/AS72/EJB+invocations+from+a+remote+server+instance 
+  Building this application takes a considerable time in order to setup and develop all the components. In particular most of the effort can be attributed to the deployment and configuration of the external boxes like: Derby database, JBoss AS, JNDI naming configuration and finding the right libraries to use in respect to the current version of framework involved.
+  I've encountered many issues, which have been solved browsing the web and looking for solutions. Some of them are summarized in the below section.
+** Issues
+  1) *Setting and connecting to JNDI using properties*
+
+     For WildFly 9.0.1 the URL provided in the slides was not working, I've solved after many tests using =http-remoting://127.0.0.1:8080=. Seems that WildFly does not listen on default port 1099 and 4447, since also =telnet 127.0.0.1 TESTED_PORT= was unreachable.
+     Also other properties int the below references was needed to perform the connection.
+     Resources:
+     - http://stackoverflow.com/questions/24452075/wildfly-remote-ejb-invocation
+     - https://docs.jboss.org/author/display/AS72/EJB+invocations+from+a+remote+server+instance 
   2) WildFly Application Server - plugin does not stop the JBoss server
-  3) javaee-api for NetBeans not working: http://stackoverflow.com/questions/15386950/classformaterror-absent-code-attribute-in-method-that-is-not-native-or-abstract
-  4) Exception in thread "main" java.lang.IllegalStateException: EJBCLIENT000025: No EJB receiver available for handling [appName:a3Server, moduleName:a3Server-ejb, distinctName:] combination for invocation context org.jboss.ejb.client.EJBClientInvocationContext@527740a2
-     --> https://developer.jboss.org/thread/199457 and same link in 1)
-  5) =Exception in thread "main" javax.naming.NoInitialContextException: Cannot instantiate class: org.jboss.naming.remote.client.InitialContextFactory [Root exception is java.lang.ClassNotFoundException: org.jboss.naming.remote.client.InitialContextFactory]=
-     --> Solved using 
+
+     Resources:
+     - http://stackoverflow.com/questions/30768143/wildfly-9-0-0-and-netbeans-8-0-2
+     - https://community.jboss.org/wiki/WildFly8SetupInNetBeans80RC1OnWindows
+  3) *=javaee-api.jar= from NetBeans libraries not working*
+
+     Error:
+     #+BEGIN_EXAMPLE
+     Exception in thread "main" java.lang.ClassFormatError: Absent Code attribute in method that is not native or abstract in class file javax/transaction/SystemException...
+     #+END_EXAMPLE
+     I've solved using the maven dependency.
+     Resources:
+     - http://stackoverflow.com/questions/15386950/classformaterror-absent-code-attribute-in-method-that-is-not-native-or-abstract
+  4) *Again JNDI properties settings issue*
+
+     Error:
+     #+BEGIN_EXAMPLE
+     Exception in thread "main" java.lang.IllegalStateException: EJBCLIENT000025: No EJB receiver available for handling [appName:a3Server, moduleName:a3Server-ejb, distinctName:] combination for invocation context org.jboss.ejb.client.EJBClientInvocationContext@527740a2
+     #+END_EXAMPLE
+     Resources:
+     - https://developer.jboss.org/thread/199457
+     - Same link in 1)
+  5) *Missing library*
+
+     Error:
+     #+BEGIN_EXAMPLE
+     Exception in thread "main" javax.naming.NoInitialContextException: Cannot instantiate class: org.jboss.naming.remote.client.InitialContextFactory [Root exception is java.lang.ClassNotFoundException: org.jboss.naming.remote.client.InitialContextFactory]
+     #+END_EXAMPLE
+
+     Solved using this Maven dependency:
      #+BEGIN_EXAMPLE
      <dependency>
-  <groupId>org.wildfly</groupId>
-  <artifactId>wildfly-ejb-client-bom</artifactId>
-  <version>8.0.0.Final</version>
-  <type>pom</type>
-</dependency>
-     #+END_EXAMPLE
-     From: https://docs.jboss.org/author/display/WFLY8/Remote+JNDI+Reference+Update+Draft
-  6) Continua copia in WildFly del pacchetto .EAR per sviluppo 
+     <groupId>org.wildfly</groupId>
+     <artifactId>wildfly-ejb-client-bom</artifactId>
+     <version>8.0.0.Final</version>
+     <type>pom</type>
+     </dependency>
+     #+END_EXAMPLE     
+     Resources:
+     - https://docs.jboss.org/author/display/WFLY8/Remote+JNDI+Reference+Update+Draft
+  6) *Repeated deployment during development*
+
+  I've found very annoying the continuous copy of the .ear package on the Application Server while developing to test it. Maybe the IDE can be configured to automatize this process but I didn't look deeper into this.
+  
