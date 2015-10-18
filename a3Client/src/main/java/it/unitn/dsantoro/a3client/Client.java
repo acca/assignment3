@@ -54,9 +54,9 @@ public class Client {
         boolean quit = false;
 
         try {
-            while ( ((ch = System.in.read()) != -1) && (quit == false) ) {
-                System.out.println(USER_MSG);
+            while ( ((ch = System.in.read()) != -1) && (quit == false) ) {                
                 if (ch != '\n' && ch != '\r') {
+                    System.out.println(USER_MSG);
                     switch((char)ch){
                         case 's':
                         case 'S':
@@ -88,10 +88,8 @@ public class Client {
     private void setupRemoteTrade () throws NamingException {
         Properties jndiProps = new Properties();
         jndiProps.put(Context.INITIAL_CONTEXT_FACTORY,"org.jboss.naming.remote.client.InitialContextFactory");
-        jndiProps.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-        //jndiProps.put(Context.PROVIDER_URL, "remote://127.0.0.1:8080");
+        jndiProps.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");        
         jndiProps.put(Context.PROVIDER_URL, "http-remoting://127.0.0.1:8080");
-        //jndiProps.put(Context.PROVIDER_URL, "remote://127.0.0.1:4447");
         //This property is important for remote resolving
         jndiProps.put("jboss.naming.client.ejb.context", true);
         //This propert is not important for remote resolving
@@ -101,10 +99,7 @@ public class Client {
         jndiProps.put(Context.SECURITY_PRINCIPAL, "user");
         // password
         jndiProps.put(Context.SECURITY_CREDENTIALS, "pw");
-        this.initialContext = new InitialContext(jndiProps);         
-        //NewSessionBeanRemote rbean = (NewSessionBeanRemote) initialContext.lookup("ejb:a3Server/a3Server-ejb/NewSessionBean!" + a3server.NewSessionBeanRemote.class.getName());
-        //final Greeter bean = (Greeter) context.lookup("ejb:" + "myapp" + "/" + "myejb" + "/" + "" + "/" + "GreeterBean" + "!" + org.myapp.ejb.Greeter.class.getName());
-        //NewSessionBeanRemote rbean = (NewSessionBeanRemote) initialContext.lookup("java:global/a3Server/a3Server-ejb/NewSessionBean");
+        this.initialContext = new InitialContext(jndiProps);                 
         this.trade = (TradeRemote) initialContext.lookup("java:a3Server-ear-1.0-SNAPSHOT/a3Server-ejb-1.0-SNAPSHOT/Trade!it.unitn.dsantoro.a3server.TradeRemote");
     }
 
