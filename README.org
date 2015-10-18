@@ -26,3 +26,4 @@
 </dependency>
      #+END_EXAMPLE
      From: https://docs.jboss.org/author/display/WFLY8/Remote+JNDI+Reference+Update+Draft
+  6) Continua copia in WildFly del pacchetto .EAR per sviluppo 

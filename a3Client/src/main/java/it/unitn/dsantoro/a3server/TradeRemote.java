@@ -13,5 +13,5 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface TradeRemote {
-    String method(String parameter);
+    public float currentValue(float nominalValue);
 }

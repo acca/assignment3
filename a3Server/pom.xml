@@ -9,5 +9,13 @@
   <modules>
     <module>a3Server-ear</module>
     <module>a3Server-ejb</module>
-  </modules>
-</project>
+    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+               </dependencies> 
+    </project>

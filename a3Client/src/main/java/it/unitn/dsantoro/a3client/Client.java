@@ -51,7 +51,7 @@ public class Client {
         //NewSessionBeanRemote rbean = (NewSessionBeanRemote) initialContext.lookup("ejb:a3Server/a3Server-ejb/NewSessionBean!" + a3server.NewSessionBeanRemote.class.getName());
         //final Greeter bean = (Greeter) context.lookup("ejb:" + "myapp" + "/" + "myejb" + "/" + "" + "/" + "GreeterBean" + "!" + org.myapp.ejb.Greeter.class.getName());
         //NewSessionBeanRemote rbean = (NewSessionBeanRemote) initialContext.lookup("java:global/a3Server/a3Server-ejb/NewSessionBean");
-        System.out.println(trade.method("ciao"));
+        System.out.println(trade.currentValue(10));
         
         
         //initialContext.close();
