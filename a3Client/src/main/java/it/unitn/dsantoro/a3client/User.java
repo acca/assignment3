@@ -10,16 +10,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import org.hibernate.Session;
 
 /**
  *
  * @author Daniele Santoro <daniele.santoro@studenti.unitn.it>
  */
 @Entity
+@Table
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long idOp;    
     private Long id;
     private float money;
     private int stocksAmount;
@@ -27,9 +31,18 @@ public class User implements Serializable {
     private final static float DEF_MONEY=1000;
     private final static int DEF_STOCKSAMOUNT=50;
 
-    User(){
+    public User(){
+        this.id=new Long(1);
         this.money = DEF_MONEY;
         this.stocksAmount = DEF_STOCKSAMOUNT;
+    }
+    
+    public void setIdOp(Long idOp) {
+        this.idOp = idOp;
+    }
+
+    public Long getIdOp() {
+        return idOp;
     }
     
     public Long getId() {
@@ -78,6 +91,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
+        // TODO Read from DB
         return "it.unitn.dsantoro.a3client.User[ id=" + id + " ]" + "money: " +this.money + " stocks: " + this.stocksAmount;
     }
     
