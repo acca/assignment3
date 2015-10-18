@@ -25,7 +25,7 @@ public class Client {
     
     private TradeRemote trade = null;
     private InitialContext initialContext = null;
-    private static final String USER_MSG = "--> Please tell me if you want to [S]ell, [B]uy your stocks or [Q]uit: ";
+    private static final String USER_MSG = "--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: ";
     private static final float NOMINAL_PRICE = 10;
     private SessionFactory sessionFactory;
 
@@ -65,6 +65,10 @@ public class Client {
                         case 'b':
                         case 'B':
                             client.buy(user);
+                            break;
+                        case 'l':
+                        case 'L':
+                            client.printUserOperation(user);
                             break;
                         case 'q':
                         case 'Q':
@@ -156,12 +160,11 @@ public class Client {
         session.close();        
     }
     
-    private User readDb(User user) {        
-        // now lets pull events from the database and list them
+    private User readDb(User user) {                
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        String hql = "FROM User U WHERE U.id = " + user.getId();
-        List result = session.createQuery(hql).list();
+        String query = "FROM User U WHERE U.id = " + user.getId();
+        List result = session.createQuery(query).list();
         for ( User u : (List<User>) result ) {
             if (u.getId().equals(user.getId())) {
                 user.setId(u.getId());
@@ -175,5 +178,23 @@ public class Client {
         session.getTransaction().commit();
         session.close();
         return user;
+    }
+    
+    private void printUserOperation(User user) {
+        System.out.println("\tList of all the oepration for user: " + user.getId());
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        String query = "FROM User U WHERE U.id = " + user.getId();
+        List result = session.createQuery(query).list();
+        for ( User u : (List<User>) result ) {
+            if (u.getId().equals(user.getId())) { 
+                System.out.println("\tOperation ID: " + u.getIdOp() + " - Stocks: " + u.getStocksAmount() + " - Money: " + u.getMoney());
+            }
+            else {
+                System.err.println("Error in SELECT query from DB.");
+            }
+        }
+        session.getTransaction().commit();
+        session.close();        
     }
 }
