@@ -57,8 +57,8 @@
                   </manifest>
               </archive>
           </configuration>
-      </plugin>
-      <plugin>
+        </plugin>
+        <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
             <version>1.2.1</version>
@@ -66,6 +66,6 @@
                 <mainClass>it.unitn.dsantoro.a3client.Client</mainClass>
             </configuration>
         </plugin>
-  </plugins>
-</build>
+    </plugins>
+    </build>
 </project>
