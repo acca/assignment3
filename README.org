@@ -341,6 +341,7 @@ Oct 18, 2015 8:39:04 PM org.jboss.naming.remote.protocol.v1.RemoteNamingStoreV1$
 
      For WildFly 9.0.1 the URL provided in the slides was not working, I've solved after many tests using =http-remoting://127.0.0.1:8080=. Seems that WildFly does not listen on default port 1099 and 4447, since also =telnet 127.0.0.1 TESTED_PORT= was unreachable.
      Also other properties int the below references was needed to perform the connection.
+
      Resources:
      - http://stackoverflow.com/questions/24452075/wildfly-remote-ejb-invocation
      - https://docs.jboss.org/author/display/AS72/EJB+invocations+from+a+remote+server+instance 
