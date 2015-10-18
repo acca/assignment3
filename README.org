@@ -79,8 +79,260 @@
 
 ** Screen-shots
    1) Application output
+      #+BEGIN_EXAMPLE
+      --> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+l
+      List of all the oepration for user: 1
+      Operation ID: 1 - Stocks: 50 - Money: 1000.0
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+b
+      User choose to buy. Default stocks amount is 10
+      User status -> Id: 1 - Money: 900.1 - Stocks: 60 - Last operation id: 2
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+b
+      User choose to buy. Default stocks amount is 10
+      User status -> Id: 1 - Money: 800.19995 - Stocks: 70 - Last operation id: 3
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+b
+      User choose to buy. Default stocks amount is 10
+      User status -> Id: 1 - Money: 701.39996 - Stocks: 80 - Last operation id: 4
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+b
+      User choose to buy. Default stocks amount is 10
+      User status -> Id: 1 - Money: 602.0 - Stocks: 90 - Last operation id: 5
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+b
+      User choose to buy. Default stocks amount is 10
+      User status -> Id: 1 - Money: 502.1 - Stocks: 100 - Last operation id: 6
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+b
+      User choose to buy. Default stocks amount is 10
+      User status -> Id: 1 - Money: 402.3 - Stocks: 110 - Last operation id: 7
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+s
+      User choose to sell. Default stocks amount is 10
+      User status -> Id: 1 - Money: 500.99997 - Stocks: 100 - Last operation id: 8
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+s
+      User choose to sell. Default stocks amount is 10
+      User status -> Id: 1 - Money: 600.19995 - Stocks: 90 - Last operation id: 9
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+s
+      User choose to sell. Default stocks amount is 10
+      User status -> Id: 1 - Money: 698.7999 - Stocks: 80 - Last operation id: 10
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+s
+      User choose to sell. Default stocks amount is 10
+      User status -> Id: 1 - Money: 799.69995 - Stocks: 70 - Last operation id: 11
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+
+l
+      List of all the oepration for user: 1
+      Operation ID: 1 - Stocks: 50 - Money: 1000.0
+      Operation ID: 2 - Stocks: 60 - Money: 900.1
+      Operation ID: 3 - Stocks: 70 - Money: 800.19995
+      Operation ID: 4 - Stocks: 80 - Money: 701.39996
+      Operation ID: 5 - Stocks: 90 - Money: 602.0
+      Operation ID: 6 - Stocks: 100 - Money: 502.1
+      Operation ID: 7 - Stocks: 110 - Money: 402.3
+      Operation ID: 8 - Stocks: 100 - Money: 500.99997
+      Operation ID: 9 - Stocks: 90 - Money: 600.19995
+      Operation ID: 10 - Stocks: 80 - Money: 698.7999
+      Operation ID: 11 - Stocks: 70 - Money: 799.69995
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+q
+Quitting. Hope you had good business !!!
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 30.047 s
+[INFO] Finished at: 2015-10-18T21:00:02+02:00
+[INFO] Final Memory: 19M/309M
+[INFO] ------------------------------------------------------------------------
+      #+END_EXAMPLE
    2) Application output showing DB queries
+      #+BEGIN_EXAMPLE
+      acca@sirio assignment3 $ mvn exec:java -f a3Client/pom.xml 
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building a3Client 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] >>> exec-maven-plugin:1.2.1:java (default-cli) > validate @ a3Client >>>
+[INFO] 
+[INFO] <<< exec-maven-plugin:1.2.1:java (default-cli) < validate @ a3Client <<<
+[INFO] 
+[INFO] --- exec-maven-plugin:1.2.1:java (default-cli) @ a3Client ---
+Oct 18, 2015 8:38:01 PM org.xnio.Xnio <clinit>
+INFO: XNIO version 3.2.0.Final
+Oct 18, 2015 8:38:01 PM org.xnio.nio.NioXnio <clinit>
+INFO: XNIO NIO Implementation Version 3.2.0.Final
+Oct 18, 2015 8:38:01 PM org.jboss.remoting3.EndpointImpl <clinit>
+INFO: JBoss Remoting version 4.0.0.Final
+Oct 18, 2015 8:38:01 PM org.jboss.ejb.client.remoting.VersionReceiver handleMessage
+INFO: EJBCLIENT000017: Received server version 2 and marshalling strategies [river]
+Oct 18, 2015 8:38:01 PM org.jboss.ejb.client.remoting.RemotingConnectionEJBReceiver associate
+INFO: EJBCLIENT000013: Successful version handshake completed for receiver context EJBReceiverContext{clientContext=org.jboss.ejb.client.EJBClientContext@12bdeac1, receiver=Remoting connection EJB receiver [connection=Remoting connection <4207a4d8>,channel=jboss.ejb,nodename=sirio]} on channel Channel ID ad3ba15c (outbound) of Remoting connection 23c23a06 to localhost/127.0.0.1:8080
+Oct 18, 2015 8:38:01 PM org.jboss.ejb.client.EJBClient <clinit>
+INFO: JBoss EJB Client version 2.0.0.Final
+Oct 18, 2015 8:38:02 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+Oct 18, 2015 8:38:02 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.0.1.Final}
+Oct 18, 2015 8:38:02 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+Oct 18, 2015 8:38:02 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+Oct 18, 2015 8:38:02 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+Oct 18, 2015 8:38:02 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Oct 18, 2015 8:38:02 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: User.hbm.xml
+Oct 18, 2015 8:38:03 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+Oct 18, 2015 8:38:03 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+Oct 18, 2015 8:38:03 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+Oct 18, 2015 8:38:03 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+Oct 18, 2015 8:38:03 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [org.apache.derby.jdbc.ClientDriver] at URL [jdbc:derby://localhost:1527/a3clientdb;create=true]
+Oct 18, 2015 8:38:03 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {}
+Oct 18, 2015 8:38:03 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.DerbyDialect
+Oct 18, 2015 8:38:03 PM org.hibernate.dialect.DerbyDialect <init>
+WARN: HHH000430: The DerbyDialect dialect has been deprecated; use one of the version-specific dialects instead
+Oct 18, 2015 8:38:03 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+Oct 18, 2015 8:38:03 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+Oct 18, 2015 8:38:03 PM org.hibernate.tool.hbm2ddl.SchemaExport execute
+INFO: HHH000227: Running hbm2ddl schema export
+Hibernate: drop table USERS
+Hibernate: create table USERS (USER_IDOP bigint not null, USER_MONEY float, USER_STOCKS integer, USER_ID bigint, primary key (USER_IDOP))
+Oct 18, 2015 8:38:03 PM org.hibernate.tool.hbm2ddl.SchemaExport execute
+INFO: HHH000230: Schema export complete
+Hibernate: select max(USER_IDOP) from USERS
+Hibernate: select user0_.USER_IDOP as USER1_0_, user0_.USER_MONEY as USER2_0_, user0_.USER_STOCKS as USER3_0_, user0_.USER_ID as USER4_0_ from USERS user0_ where user0_.USER_ID=1
+Hibernate: insert into USERS (USER_MONEY, USER_STOCKS, USER_ID, USER_IDOP) values (?, ?, ?, ?)
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+s
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+      User choose to sell. Default stocks amount is 10
+Hibernate: select user0_.USER_IDOP as USER1_0_, user0_.USER_MONEY as USER2_0_, user0_.USER_STOCKS as USER3_0_, user0_.USER_ID as USER4_0_ from USERS user0_ where user0_.USER_ID=1
+Hibernate: insert into USERS (USER_MONEY, USER_STOCKS, USER_ID, USER_IDOP) values (?, ?, ?, ?)
+      it.unitn.dsantoro.a3client.User[ id=1 ]money: 1101.2 stocks: 40
+s
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+      User choose to sell. Default stocks amount is 10
+Hibernate: select user0_.USER_IDOP as USER1_0_, user0_.USER_MONEY as USER2_0_, user0_.USER_STOCKS as USER3_0_, user0_.USER_ID as USER4_0_ from USERS user0_ where user0_.USER_ID=1
+Hibernate: insert into USERS (USER_MONEY, USER_STOCKS, USER_ID, USER_IDOP) values (?, ?, ?, ?)
+      it.unitn.dsantoro.a3client.User[ id=1 ]money: 1203.0 stocks: 30
+b
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+      User choose to buy. Default stocks amount is 10
+Hibernate: select user0_.USER_IDOP as USER1_0_, user0_.USER_MONEY as USER2_0_, user0_.USER_STOCKS as USER3_0_, user0_.USER_ID as USER4_0_ from USERS user0_ where user0_.USER_ID=1
+Hibernate: insert into USERS (USER_MONEY, USER_STOCKS, USER_ID, USER_IDOP) values (?, ?, ?, ?)
+      it.unitn.dsantoro.a3client.User[ id=1 ]money: 1102.2 stocks: 40
+b
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+      User choose to buy. Default stocks amount is 10
+Hibernate: select user0_.USER_IDOP as USER1_0_, user0_.USER_MONEY as USER2_0_, user0_.USER_STOCKS as USER3_0_, user0_.USER_ID as USER4_0_ from USERS user0_ where user0_.USER_ID=1
+Hibernate: insert into USERS (USER_MONEY, USER_STOCKS, USER_ID, USER_IDOP) values (?, ?, ?, ?)
+      it.unitn.dsantoro.a3client.User[ id=1 ]money: 1002.39996 stocks: 50
+l
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+      List of all the oepration for user: 1
+Hibernate: select user0_.USER_IDOP as USER1_0_, user0_.USER_MONEY as USER2_0_, user0_.USER_STOCKS as USER3_0_, user0_.USER_ID as USER4_0_ from USERS user0_ where user0_.USER_ID=1
+      Operation ID: 1 - Stocks: 50 - Money: 1000.0
+      Operation ID: 2 - Stocks: 40 - Money: 1101.2
+      Operation ID: 3 - Stocks: 30 - Money: 1203.0
+      Operation ID: 4 - Stocks: 40 - Money: 1102.2
+      Operation ID: 5 - Stocks: 50 - Money: 1002.39996
+q
+--> Please tell me if you want to [S]ell, [B]uy, [L]ist transactions or [Q]uit: 
+Quitting. Hope you had good business !!!
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:03 min
+[INFO] Finished at: 2015-10-18T20:39:04+02:00
+[INFO] Final Memory: 12M/203M
+[INFO] ------------------------------------------------------------------------
+Oct 18, 2015 8:39:04 PM org.jboss.naming.remote.protocol.v1.RemoteNamingStoreV1$MessageReceiver handleEnd
+      #+END_EXAMPLE
    3) JBoss AS log file
+      #+BEGIN_EXAMPLE
+....
+2015-10-18 15:28:35,606 INFO  [org.jboss.weld.deployer] (MSC service thread 1-3) WFLYWELD0003: Processing weld deployment a3Server-ejb-1.0-SNAPSHOT.jar
+2015-10-18 15:28:35,607 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-3) JNDI bindings for session bean named Trade in deployment unit subdeployment "a3Server-ejb-1.0-SNAPSHOT.jar" of deployment "a3Server-ear-1.0-SNAPSHOT.ear" are as follows:
+
+      java:global/a3Server-ear-1.0-SNAPSHOT/a3Server-ejb-1.0-SNAPSHOT/Trade!it.unitn.dsantoro.a3server.TradeRemote
+      java:app/a3Server-ejb-1.0-SNAPSHOT/Trade!it.unitn.dsantoro.a3server.TradeRemote
+      java:module/Trade!it.unitn.dsantoro.a3server.TradeRemote
+      java:jboss/exported/a3Server-ear-1.0-SNAPSHOT/a3Server-ejb-1.0-SNAPSHOT/Trade!it.unitn.dsantoro.a3server.TradeRemote
+      java:global/a3Server-ear-1.0-SNAPSHOT/a3Server-ejb-1.0-SNAPSHOT/Trade
+      java:app/a3Server-ejb-1.0-SNAPSHOT/Trade
+      java:module/Trade
+
+2015-10-18 15:28:35,608 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) WFLYWELD0006: Starting Services for CDI deployment: a3Server-ear-1.0-SNAPSHOT.ear
+2015-10-18 15:28:35,609 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) WFLYWELD0009: Starting weld service for deployment a3Server-ear-1.0-SNAPSHOT.ear
+2015-10-18 15:28:35,701 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 2) WFLYSRV0016: Replaced deployment "a3Server-ear-1.0-SNAPSHOT.ear" with deployment "a3Server-ear-1.0-SNAPSHOT.ear"
+....
+2015-10-18 20:59:49,067 INFO  [stdout] (EJB default - 1) --- Converting stock nominalValue to currentValue ---
+2015-10-18 20:59:49,067 INFO  [stdout] (EJB default - 1) Stock nominal value: 10.0
+2015-10-18 20:59:49,067 INFO  [stdout] (EJB default - 1) Percentage applied: 1.0073289
+2015-10-18 20:59:49,067 INFO  [stdout] (EJB default - 1) Stock current value: 10.0
+2015-10-18 20:59:49,068 INFO  [stdout] (EJB default - 2) --- Converting stock nominalValue to currentValue ---
+2015-10-18 20:59:49,068 INFO  [stdout] (EJB default - 2) Stock nominal value: 10.0
+2015-10-18 20:59:49,069 INFO  [stdout] (EJB default - 2) Percentage applied: 0.98975426
+2015-10-18 20:59:49,069 INFO  [stdout] (EJB default - 2) Stock current value: 9.8
+2015-10-18 20:59:49,731 INFO  [stdout] (EJB default - 3) --- Converting stock nominalValue to currentValue ---
+2015-10-18 20:59:49,731 INFO  [stdout] (EJB default - 3) Stock nominal value: 10.0
+2015-10-18 20:59:49,731 INFO  [stdout] (EJB default - 3) Percentage applied: 1.0113412
+2015-10-18 20:59:49,731 INFO  [stdout] (EJB default - 3) Stock current value: 10.1
+2015-10-18 20:59:49,732 INFO  [stdout] (EJB default - 4) --- Converting stock nominalValue to currentValue ---
+2015-10-18 20:59:49,732 INFO  [stdout] (EJB default - 4) Stock nominal value: 10.0
+2015-10-18 20:59:49,732 INFO  [stdout] (EJB default - 4) Percentage applied: 0.9807118
+2015-10-18 20:59:49,732 INFO  [stdout] (EJB default - 4) Stock current value: 9.8
+2015-10-18 20:59:49,734 INFO  [stdout] (EJB default - 5) --- Converting stock nominalValue to currentValue ---
+2015-10-18 20:59:49,734 INFO  [stdout] (EJB default - 5) Stock nominal value: 10.0
+2015-10-18 20:59:49,734 INFO  [stdout] (EJB default - 5) Percentage applied: 1.0232465
+2015-10-18 20:59:49,734 INFO  [stdout] (EJB default - 5) Stock current value: 10.2
+2015-10-18 20:59:49,735 INFO  [stdout] (EJB default - 6) --- Converting stock nominalValue to currentValue ---
+2015-10-18 20:59:49,735 INFO  [stdout] (EJB default - 6) Stock nominal value: 10.0
+2015-10-18 20:59:49,735 INFO  [stdout] (EJB default - 6) Percentage applied: 1.0339323
+2015-10-18 20:59:49,735 INFO  [stdout] (EJB default - 6) Stock current value: 10.3
+2015-10-18 20:59:49,736 INFO  [stdout] (EJB default - 7) --- Converting stock nominalValue to currentValue ---
+2015-10-18 20:59:49,736 INFO  [stdout] (EJB default - 7) Stock nominal value: 10.0
+2015-10-18 20:59:49,736 INFO  [stdout] (EJB default - 7) Percentage applied: 1.0370677
+2015-10-18 20:59:49,736 INFO  [stdout] (EJB default - 7) Stock current value: 10.3
+2015-10-18 20:59:49,737 INFO  [stdout] (EJB default - 8) --- Converting stock nominalValue to currentValue ---
+2015-10-18 20:59:49,737 INFO  [stdout] (EJB default - 8) Stock nominal value: 10.0
+2015-10-18 20:59:49,737 INFO  [stdout] (EJB default - 8) Percentage applied: 1.0367454
+2015-10-18 20:59:49,737 INFO  [stdout] (EJB default - 8) Stock current value: 10.3
+2015-10-18 20:59:49,738 INFO  [stdout] (EJB default - 9) --- Converting stock nominalValue to currentValue ---
+2015-10-18 20:59:49,738 INFO  [stdout] (EJB default - 9) Stock nominal value: 10.0
+2015-10-18 20:59:49,738 INFO  [stdout] (EJB default - 9) Percentage applied: 0.96721834
+2015-10-18 20:59:49,738 INFO  [stdout] (EJB default - 9) Stock current value: 9.6
+2015-10-18 20:59:49,739 INFO  [stdout] (EJB default - 10) --- Converting stock nominalValue to currentValue ---
+2015-10-18 20:59:49,739 INFO  [stdout] (EJB default - 10) Stock nominal value: 10.0
+2015-10-18 20:59:49,739 INFO  [stdout] (EJB default - 10) Percentage applied: 1.0393243
+2015-10-18 20:59:49,739 INFO  [stdout] (EJB default - 10) Stock current value: 10.3
+2015-10-18 20:59:49,740 INFO  [stdout] (EJB default - 1) --- Converting stock nominalValue to currentValue ---
+2015-10-18 20:59:49,740 INFO  [stdout] (EJB default - 1) Stock nominal value: 10.0
+2015-10-18 20:59:49,740 INFO  [stdout] (EJB default - 1) Percentage applied: 0.9981717
+2015-10-18 20:59:49,740 INFO  [stdout] (EJB default - 1) Stock current value: 9.9
+2015-10-18 20:59:49,743 INFO  [stdout] (EJB default - 2) --- Converting stock nominalValue to currentValue ---
+2015-10-18 20:59:49,743 INFO  [stdout] (EJB default - 2) Stock nominal value: 10.0
+2015-10-18 20:59:49,743 INFO  [stdout] (EJB default - 2) Percentage applied: 1.0155833
+2015-10-18 20:59:49,743 INFO  [stdout] (EJB default - 2) Stock current value: 10.1
+      #+END_EXAMPLE
 * Comments and notes
   Building this application takes a considerable time in order to setup and develop all the components. In particular most of the effort can be attributed to the deployment and configuration of the external boxes like: Derby database, JBoss AS, JNDI naming configuration and finding the right libraries to use in respect to the current version of framework involved.
   I've encountered many issues, which have been solved browsing the web and looking for solutions. Some of them are summarized in the below section.
