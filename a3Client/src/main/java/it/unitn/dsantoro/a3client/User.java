@@ -91,8 +91,8 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        // TODO Read from DB
-        return "it.unitn.dsantoro.a3client.User[ id=" + id + " ]" + "money: " +this.money + " stocks: " + this.stocksAmount;
+        // TODO Read from DB ?
+        return "User status -> Id: " + id + " - Money: " +this.money + " - Stocks: " + this.stocksAmount + " - Last operation id: " + this.getIdOp();
     }
     
     public void buy() {
